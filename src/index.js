@@ -97,3 +97,43 @@ let matches = [...str.matchAll(definedJsFunctionsRegex)];
 
 // (?:const|let|var)\s*([A-z0-9]+)?\s*=\s(function\s*\(([^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*\)|\(([^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*\)\s*\=\>)\s*\{((?:[^}{]+|\{[^}{]*\}|[^}]|\}(\"|\'|\`))*)*\}
 // call from curr context - const b = {f1: ()=> {console.log("f1")}, f2: function() {console.log("f2"); this.f1();}}
+
+
+
+const definedJsFunctionsAsObjectRegex = /^(?:const|let|var)\s*([A-z0-9]+)?\s*=\s(function\s*\(([^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*\)|\(([^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*\)\s*\=\>)\s*\{((?:[^}{]+|\{[^}{]*\}|[^}]|\}(\"|\'|\`))*)*\}/gm
+
+const str = `
+let f = function(a,b) {
+  console.log('gdhfsgdfg');
+}
+
+const f2 = (a,b,   d) => { blabla }
+
+let f3 = function(){
+  fdgdhgf
+}
+
+function test() {
+	const inner = (t, b) => { im must be undetected}
+	const inner2 = function (a,b) {
+		im must be undetected too
+	}
+}
+
+// here checking for }"
+function(fds) { obj = {} return "}" }
+
+function r () { obj = {}; a = []; }
+
+function a(){console.log('a')} function b(){console.log('b')}
+`;
+
+let matches = [...str.matchAll(definedJsFunctionsAsObjectRegex)];
+const fn = `return ${matches[0][2]} {${matches[0][5]}}`;
+console.log(fn);
+var func = new Function(fn)();
+
+console.log(func);
+
+
+
