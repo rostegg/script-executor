@@ -17,24 +17,16 @@
     "background": {
         "scripts": ["src/browser-polyfill.js", "src/background.js"]
     },
-    "commands": {
-      "enable-remove-mode": {
-        "suggested_key": { "default": "Alt+Shift+R" },
-        "description": "Enable remove mode"
-      },
-      "disable-remove-mode": {
-        "suggested_key": { "default": "Alt+Shift+D" },
-        "description": "Disable remove mode"
-      },
-      "restore-from-cache": {
-        "suggested_key": { "default": "Alt+Shift+Z" },
-        "description": "Restore last removed item"
-      }
-    },
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
         "js": ["src/index.js"]
       }
-    ]
+    ],
+    "browser_action": {
+      "default_icon": "icons/java-script.png",
+      "default_title": "Script Executor",
+      "default_popup": "static/popup-menu.html"
+    },
+    "permissions": ["storage", "tabs"]
   }
