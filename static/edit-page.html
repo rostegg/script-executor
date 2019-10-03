@@ -9,27 +9,17 @@
   <body class="color-body">
     <div id="edit-form-container">
         <div id="snippet-info-container">
-                <div id="snippet-name-container" class="form__element">
-                    <label for="snippet-name" class="form__element__label">Snippet name</label>
-                    <input type="text" id="snippet-name" class="form__element__input">
-                </div>
+            <div id="snippet-name-container" class="form__element">
+                <label for="snippet-name" class="form__element__label">Snippet name</label>
+                <input type="text" id="snippet-name" class="form__element__input">
+            </div>
+            <button id="save-button" class="edit-form-action-button">Save snippet</button>
+            <button id="remove-button" class="edit-form-action-button">Delete snippet</button>
         </div>
         <div class="line-separator"></div>
         <div id="editor"></div>
     </div>
     <script src="../src/deps/ace/src-min/ace.js"></script>
     <script src="../src/edit-form.js"></script>
-    <script>
-        const formInput = document.querySelectorAll('.form__element__input');
-        Array.prototype.forEach.call(formInput, function(el){
-            el.addEventListener("focus", (event) => {
-                el.parentNode.classList.add('form__element--typing');
-            });
-            el.addEventListener("blur", (event) => {
-                if (el.value.length == 0) {
-                el.parentNode.classList.remove('form__element--typing');
-            }});
-        });
-    </script>
   </body>
 </html>

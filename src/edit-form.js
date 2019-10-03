@@ -25,6 +25,17 @@ class EditForm {
     }
 }
 
+const formInput = document.querySelectorAll('.form__element__input');
+Array.prototype.forEach.call(formInput, function(el){
+    el.addEventListener("focus", (event) => {
+        el.parentNode.classList.add('form__element--typing');
+    });
+    el.addEventListener("blur", (event) => {
+        if (el.value.length == 0) {
+        el.parentNode.classList.remove('form__element--typing');
+    }});
+});
+
 const editForm = new EditForm(document.getElementById('edit-form-container'));
 const str = `
  var x = "All this is syntax highlighted";

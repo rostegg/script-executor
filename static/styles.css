@@ -55,19 +55,69 @@
     bottom: 0;
     left: 0;
 }
+
 #snippet-name-container {
-    top: 10%;
-    right: 10%;
+    position: absolute;
+    top: 15%;
+    right: 0;
     width: 40%;
+    bottom: 0;
+    left: 5%;
 }
 
-.form__element {
-  position: relative;
+.edit-form-action-button {
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
-.form__element + .form__element {
-  margin-top: 1rem;
+#save-button {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    width: 28%;
+    background: rgb(21, 93, 21);
+    color: #ffffff;
 }
+
+#remove-button {
+    position: absolute;
+    top: 40%;
+    right: 5%;
+    width: 28%;
+    background: rgb(116, 24, 24);
+    color: #ffffff;
+}
+
+#save-button :hover,
+#save-button :focus {
+    background: rgb(16, 70, 16);
+}
+
+#remove-button :hover,
+#remove-button :focus {
+    background: rgb(82, 17, 17);
+}
+
+.edit-form-action-button :focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+.edit-form-action-button :active {
+    transform: scale(0.99);
+}
+
 
 .form__element__label, .form__element__input {
   font-size: 1rem;
