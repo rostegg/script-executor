@@ -10,7 +10,8 @@ scriptExecutorPort.onMessage.addListener(function(message) {
   switch (true) {
     case typeof message.responseState === 'object':
       console.log("Its response state!!");
-      initGlobalExecutor(objectAsString(message.responseState))
+      updateGlobalState(objectAsString(message.responseState));
+      //initGlobalExecutor(objectAsString(message.responseState))
       break;
     default:
         scriptExecutorPort.postMessage(message);
@@ -37,7 +38,7 @@ function setValue(path, value) {
 }
 
 function initGlobalExecutor(state) {
-  window.eval(`var ${executorName} = ${state}`)
+  window.eval(`wind${executorName} = ${state}`)
   console.log("Here check init obj")
   console.log(getValue('window.scriptExecutor'))
   console.log(getValue('scriptExecutor'))
